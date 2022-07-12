@@ -1,6 +1,11 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
+  annotations:
+    pv.kubernetes.io/bind-completed: "yes"
+    pv.kubernetes.io/bound-by-controller: "yes"
+    volume.beta.kubernetes.io/storage-provisioner: csi.vsphere.vmware.com
+
   name: mongo-storage
   namespace: pacman
 spec:
@@ -9,3 +14,6 @@ spec:
   resources:
     requests:
       storage: 1Gi
+  storageClassName: tanzu-nfs01-policy
+  volumeMode: Filesystem
+
