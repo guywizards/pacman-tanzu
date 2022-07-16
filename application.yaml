@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/egedsoft/pacman-tanzu.git
+    repoURL: https://github.com/guywizards/pacman-tanzu.git
     targetRevision: HEAD
     path: deployments
   destination:
