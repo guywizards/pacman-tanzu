@@ -13,10 +13,6 @@ spec:
       name: mongo
   template:
     metadata:
-      annotations:
-        vault.hashicorp.com/agent-inject: 'true'
-        vault.hashicorp.com/role: 'pacman'
-        vault.hashicorp.com/agent-inject-secret-mongodb-users-secret: 'secret/pacman'        
       labels:
         name: mongo
     spec:
