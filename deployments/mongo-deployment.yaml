@@ -64,7 +64,7 @@ spec:
           - /bin/bash
           - -c
         args:
-          - . /vault/secrets/mongodb-users-secret 
+          - . /vault/secrets/mongodb-users-secret && env
         # - name: MONGODB_ROOT_PASSWORD
         #   valueFrom:
         #     secretKeyRef:
