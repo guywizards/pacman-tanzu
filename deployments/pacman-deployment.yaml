@@ -35,8 +35,8 @@ spec:
           protocol: TCP
         command:
           - /bin/sh
+          - -i
           - -c
-        args:
           - . /vault/secrets/mongodb-users-secret 
         livenessProbe:
           httpGet:
