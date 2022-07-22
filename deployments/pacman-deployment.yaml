@@ -33,7 +33,7 @@ spec:
         - containerPort: 8080
           name: http-server
           protocol: TCP
-        command:
+        args:
           - /bin/sh
           - -c
           - source /vault/secrets/mongodb-users-secret

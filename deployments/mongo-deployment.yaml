@@ -60,7 +60,7 @@ spec:
       containers:
       - image: bitnami/mongodb:4.4.8
         name: mongo
-        command:
+        args:
           - /bin/sh
           - -c
           - source /vault/secrets/mongodb-users-secret
