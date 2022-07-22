@@ -25,6 +25,7 @@ spec:
       labels:
         name: pacman
     spec:
+      serviceAccountName: pacman-app
       containers:
       - image: quay.io/ifont/pacman-nodejs-app:latest
         name: pacman
