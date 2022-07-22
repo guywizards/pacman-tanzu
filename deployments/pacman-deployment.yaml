@@ -37,15 +37,15 @@ spec:
           - /bin/sh
           - -i
           - -c
-          - . /vault/secrets/mongodb-users-secret 
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 8080
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 8080
+          - . /vault/secrets/mongodb-users-secret && env
+        # livenessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 8080
+        # readinessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 8080
         env:
         - name: MONGO_SERVICE_HOST
           value: mongo
