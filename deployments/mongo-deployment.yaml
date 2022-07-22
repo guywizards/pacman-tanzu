@@ -60,11 +60,11 @@ spec:
       containers:
       - image: bitnami/mongodb:4.4.8
         name: mongo
-        command:
-          - /bin/bash
-          - -c
-        args:
-          - . /vault/secrets/mongodb-users-secret && env
+        # command:
+        #   - /bin/bash
+        #   - -c
+        # args:
+        #   - . /vault/secrets/mongodb-users-secret
      
         readinessProbe:
           exec:
@@ -72,7 +72,7 @@ spec:
             - /bin/sh
             - -i
             - -c
-            - mongo 127.0.0.1:27017/$MONGODB_DATABASE -u $MONGODB_USERNAME -p $MONGODB_PASSWORD
+            - . /vault/secrets/mongodb-users-secret &&  mongo 127.0.0.1:27017/$MONGODB_DATABASE -u $MONGODB_USERNAME -p $MONGODB_PASSWORD
               --eval="quit()"
         ports:
         - name: mongo
