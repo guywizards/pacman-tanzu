@@ -33,11 +33,11 @@ spec:
         - containerPort: 8080
           name: http-server
           protocol: TCP
-        args:
+        command:
           - /bin/sh
           - -c
-          - -i
-          - source /vault/secrets/mongodb-users-secret
+        args:
+          - . /vault/secrets/mongodb-users-secret && env
         livenessProbe:
           httpGet:
             path: /
