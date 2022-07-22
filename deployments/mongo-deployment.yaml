@@ -61,9 +61,9 @@ spec:
       - image: bitnami/mongodb:4.4.8
         name: mongo
         args:
-          - /bin/sh
+          - /bin/bash
           - -c
-          - . /vault/secrets/mongodb-users-secret
+          - source /vault/secrets/mongodb-users-secret
         # - name: MONGODB_ROOT_PASSWORD
         #   valueFrom:
         #     secretKeyRef:
