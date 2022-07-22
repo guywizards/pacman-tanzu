@@ -19,10 +19,10 @@ spec:
         vault.hashicorp.com/agent-inject-secret-mongodb-users-secret: 'secret/pacman'    
         vault.hashicorp.com/agent-inject-template-mongodb-users-secret: |
           {{ with secret "secret/pacman" -}}
-            export MONGODB_ROOT_PASSWORD="{{ .Data.data.database-admin-password }}"
-            export MONGODB_DATABASE="{{ .Data.data.database-name }}"
-            export MONGODB_PASSWORD="{{ .Data.data.database-password }}"
-            export MONGODB_USERNAME="{{ .Data.data.database-user }}"
+            export MONGODB_ROOT_PASSWORD="{{ .Data.data.database_admin_password }}"
+            export MONGODB_DATABASE="{{ .Data.data.database_name }}"
+            export MONGODB_PASSWORD="{{ .Data.data.database_password }}"
+            export MONGODB_USERNAME="{{ .Data.data.database_user }}"
           {{- end }}            
       labels:
         name: mongo
