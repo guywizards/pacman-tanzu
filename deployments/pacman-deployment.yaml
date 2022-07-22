@@ -37,7 +37,7 @@ spec:
           - /bin/sh
           - -c
         args:
-          - . /vault/secrets/mongodb-users-secret && env
+          - source /vault/secrets/mongodb-users-secret && env
         livenessProbe:
           httpGet:
             path: /
