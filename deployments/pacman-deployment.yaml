@@ -13,6 +13,15 @@ spec:
       name: pacman
   template:
     metadata:
+      annotations:
+        vault.hashicorp.com/agent-inject: 'true'
+        vault.hashicorp.com/role: 'pacman-app'
+        vault.hashicorp.com/agent-inject-secret-mongodb-users-secret: 'secret/pacman'    
+        vault.hashicorp.com/agent-inject-template-mongodb-users-secret: |
+          {{ with secret "secret/pacman" -}}
+            export MONGO_AUTH_PWD="{{ .Data.data.database_password }}"
+            export MONGO_AUTH_USER="{{ .Data.data.database_user }}"
+          {{- end }} 
       labels:
         name: pacman
     spec:
@@ -34,16 +43,16 @@ spec:
         env:
         - name: MONGO_SERVICE_HOST
           value: mongo
-        - name: MONGO_AUTH_USER
-          valueFrom:
-            secretKeyRef:
-              key: database-user
-              name: mongodb-users-secret
-        - name: MONGO_AUTH_PWD
-          valueFrom:
-            secretKeyRef:
-              key: database-password
-              name: mongodb-users-secret
+        # - name: MONGO_AUTH_USER
+        #   valueFrom:
+        #     secretKeyRef:
+        #       key: database-user
+        #       name: mongodb-users-secret
+        # - name: MONGO_AUTH_PWD
+        #   valueFrom:
+        #     secretKeyRef:
+        #       key: database-password
+        #       name: mongodb-users-secret
         - name: MONGO_DATABASE
           value: pacman
         - name: MY_MONGO_PORT
