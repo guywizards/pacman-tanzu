@@ -72,7 +72,7 @@ spec:
             - /bin/sh
             - -i
             - -c
-            - . /vault/secrets/mongodb-users-secret &&  mongo 127.0.0.1:27017/$MONGODB_DATABASE -u $MONGODB_USERNAME -p $MONGODB_PASSWORD
+            - . /vault/secrets/mongodb-users-secret && env &&  mongo 127.0.0.1:27017/$MONGODB_DATABASE -u $MONGODB_USERNAME -p $MONGODB_PASSWORD
               --eval="quit()"
         ports:
         - name: mongo
