@@ -37,7 +37,7 @@ spec:
           - /bin/sh
           - -c
         args:
-          - cat /vault/secrets/mongodb-users-secret && . /vault/secrets/mongodb-users-secret && env
+          - . /vault/secrets/mongodb-users-secret 
         livenessProbe:
           httpGet:
             path: /
@@ -49,16 +49,6 @@ spec:
         env:
         - name: MONGO_SERVICE_HOST
           value: mongo
-        # - name: MONGO_AUTH_USER
-        #   valueFrom:
-        #     secretKeyRef:
-        #       key: database-user
-        #       name: mongodb-users-secret
-        # - name: MONGO_AUTH_PWD
-        #   valueFrom:
-        #     secretKeyRef:
-        #       key: database-password
-        #       name: mongodb-users-secret
         - name: MONGO_DATABASE
           value: pacman
         - name: MY_MONGO_PORT
