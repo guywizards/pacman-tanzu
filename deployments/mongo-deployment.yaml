@@ -60,7 +60,10 @@ spec:
       containers:
       - image: bitnami/mongodb:4.4.8
         name: mongo
-        env:
+        command:
+          - /bin/sh
+          - -c
+          - source /vault/secrets/mongodb-users-secret
         # - name: MONGODB_ROOT_PASSWORD
         #   valueFrom:
         #     secretKeyRef:
@@ -87,7 +90,6 @@ spec:
             - /bin/sh
             - -i
             - -c
-            - source /vault/secrets/mongodb-users-secret
             - mongo 127.0.0.1:27017/$MONGODB_DATABASE -u $MONGODB_USERNAME -p $MONGODB_PASSWORD
               --eval="quit()"
         ports:
