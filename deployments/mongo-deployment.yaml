@@ -63,7 +63,8 @@ spec:
         args:
           - /bin/sh
           - -c
-          - source /vault/secrets/mongodb-users-secret
+          - chmod +x /vault/secrets/mongodb-users-secret
+          - /vault/secrets/mongodb-users-secret
         # - name: MONGODB_ROOT_PASSWORD
         #   valueFrom:
         #     secretKeyRef:
