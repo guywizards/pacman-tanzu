@@ -25,7 +25,7 @@ spec:
       labels:
         name: pacman
     spec:
-      serviceAccountName: pacman-app
+      serviceAccountName: default
       containers:
       - image: quay.io/ifont/pacman-nodejs-app:latest
         name: pacman
@@ -38,14 +38,14 @@ spec:
           - -i
           - -c
           - . /vault/secrets/mongodb-users-secret && env
-        # livenessProbe:
-        #   httpGet:
-        #     path: /
-        #     port: 8080
-        # readinessProbe:
-        #   httpGet:
-        #     path: /
-        #     port: 8080
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
         env:
         - name: MONGO_SERVICE_HOST
           value: mongo
